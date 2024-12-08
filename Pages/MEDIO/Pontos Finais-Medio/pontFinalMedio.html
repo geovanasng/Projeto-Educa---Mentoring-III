@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Educa Game - Pontuação Nível Médio</title>
+        <link rel="stylesheet" href="/Pages/Style - cópia/nivel.css">
+        <img src="/logoEduca.jpg" class="logo">
+        <script src="../nivel.js" defer></script>
+    </head>
+
+    <body>
+        <h1 class="text">SUA PONTUAÇÃO FINAL NO NÍVEL MÉDIO É: </h1>
+        <br>
+        <h1 id="pontuacao"></h1>
+        <h1 id="pronome"></h1>
+        <h1 id="verbo"></h1>
+        <h1 id="substantivo"></h1>
+        <h1 id="adjetivo"></h1>
+
+        <a href="/Pages/Home.html" class="textTelaInicial" id="voltarBtn">Voltar para tela inicial</a>
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        <script>
+            // Recupera a pontuação salva
+            const verbo = localStorage.getItem('pontuacaoVerboMedio');
+            document.getElementById('verbo').innerText = `Verbo: ${verbo ? verbo : '0'}`;
+
+            const substantivo = localStorage.getItem('pontuacaoSubstantivoMedio');
+            document.getElementById('substantivo').innerText = `Substantivo: ${substantivo ? substantivo : '0'}`;
+
+            const pronome = localStorage.getItem('pontuacaoPronomeMedio');
+            document.getElementById('pronome').innerText = `Pronome: ${pronome ? pronome : '0'}`;
+
+            const adjetivo = localStorage.getItem('pontuacaoAdjetivoMedio');
+            document.getElementById('adjetivo').innerText = `Adjetivo: ${adjetivo ? adjetivo : '0'}`;
+
+            const total = parseInt(verbo) + parseInt(substantivo) + parseInt(pronome) + parseInt(adjetivo)
+            document.getElementById('pontuacao').innerText = `Total: ${total}`;
+
+            // Função para limpar as pontuações
+            function limparPontuacoes() {
+                // Array de chaves para limpar
+                const chavesLocalStorage = [
+                    'pontuacaoVerboMedio', 
+                    'pontuacaoSubstantivoMedio', 
+                    'pontuacaoPronomeMedio',
+                    'pontuacaoAdjetivoMedio'
+                ];
+
+                // Limpar localStorage
+                chavesLocalStorage.forEach(chave => {
+                    localStorage.removeItem(chave);
+                });
+            }
+
+            // Chamar limparPontuacoes ao clicar no botão "Voltar"
+            document.getElementById('voltarBtn').addEventListener('click', limparPontuacoes);
+
+        </script>
+    </body>
+</html>

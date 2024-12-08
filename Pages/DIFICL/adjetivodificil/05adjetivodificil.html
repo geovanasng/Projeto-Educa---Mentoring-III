@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Educa Game - Pontuação Nível Difícil</title>
+        <link rel="stylesheet" href="/Pages/Style - cópia/nivel.css">
+        <img src="/logoEduca.jpg" class="logo">
+        <script src="../nivel.js" defer></script>
+    </head>
+
+    <body>
+        <h2 class="text">SUA PONTUAÇÃO FINAL NO NÍVEL DIFÍCIL É: <span id="pontuacaoFinal"></span></h2>
+
+        <a href="Home.html" class="textTelaInicial">Voltar para tela inicial</a>
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+
+        <script>
+            // Recupera a pontuação salva
+            const pontuacaoFinal = localStorage.getItem('pontuacaoQuiz1');
+            document.getElementById('pontuacaoFinal').textContent = pontuacaoFinal ? pontuacaoFinal : '0';
+        </script>
+    </body>
+</html>

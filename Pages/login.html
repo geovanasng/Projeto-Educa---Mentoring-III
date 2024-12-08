@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Educa Game - Login</title>
+        <link rel="stylesheet" href="/Pages/Style - cópia/login.css">
+        <img src="/logoEduca.jpg" class="logo">
+        <script>
+            function salvarNome() {
+                const nome = document.getElementById("nome").value;
+                if (nome) {
+                    localStorage.setItem("nomeUsuario", JSON.stringify(nome)); // Armazena o nome no localStorage
+                    location.href = "nivel.html";
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <title> Login </title>
+        <div class="text"> 
+            <h3>Como você gostaria de ser chamado?</h3>
+        </div>
+
+        <input type="text" id="nome" required placeholder="Digite seu nome" class="inputBox">
+        <button onclick="salvarNome()" class="button">Enviar</button>
+        
+        <style> 
+            input::placeholder{
+                color: white;
+                text-align: center;
+            } 
+        </style>
+
+        <a href="Home.html" class="textTelaInicial">Voltar para tela inicial</a>
+
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+
+    </body>
+</html>

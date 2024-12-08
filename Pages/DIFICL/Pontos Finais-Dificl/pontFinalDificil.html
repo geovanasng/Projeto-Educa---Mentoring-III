@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Educa Game - Pontuação Nível Difícil</title>
+        <link rel="stylesheet" href="/Pages/Style - cópia/nivel.css">
+        <img src="/logoEduca.jpg" class="logo">
+    </head>
+
+    <body>
+        <h2 class="text">SUA PONTUAÇÃO FINAL NO NÍVEL DIFÍCIL É: </h2>
+        <span id="pontuacaoFinal"></span>
+        <br>
+        <h1 id="pronome"></h1>
+        <h1 id="verbo"></h1>
+        <h1 id="substantivo"></h1>
+        <h1 id="adjetivo"></h1>
+    
+        <a href="/Pages/Home.html" class="textTelaInicial" id="voltarBtn">Voltar para tela inicial</a>
+    
+        <div vw class="enabled">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+    
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+        <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+        <script>
+            // Recupera a pontuação salva
+            const verbo = localStorage.getItem('pontuacaoVerboDificil') || '0';
+            const substantivo = localStorage.getItem('pontuacaoSubstantivoDificil') || '0';
+            const pronome = localStorage.getItem('pontuacaoPronomeDificil') || '0';
+            const adjetivo = localStorage.getItem('pontuacaoAdjetivoDificil') || '0';
+    
+            // Verificar se os valores são números válidos
+            const verboValor = isNaN(parseInt(verbo)) ? 0 : parseInt(verbo);
+            const substantivoValor = isNaN(parseInt(substantivo)) ? 0 : parseInt(substantivo);
+            const pronomeValor = isNaN(parseInt(pronome)) ? 0 : parseInt(pronome);
+            const adjetivoValor = isNaN(parseInt(adjetivo)) ? 0 : parseInt(adjetivo);
+    
+            // Exibir pontuações
+            document.getElementById('verbo').innerText = `Verbo: ${verboValor}`;
+            document.getElementById('substantivo').innerText = `Substantivo: ${substantivoValor}`;
+            document.getElementById('pronome').innerText = `Pronome: ${pronomeValor}`;
+            document.getElementById('adjetivo').innerText = `Adjetivo: ${adjetivoValor}`;
+    
+            // Calcular total
+            const total = verboValor + substantivoValor + pronomeValor + adjetivoValor;
+            document.getElementById('pontuacaoFinal').innerText = `Total: ${total}`;
+            
+            // Função para limpar as pontuações
+            function limparPontuacoes() {
+                // Array de chaves para limpar
+                const chavesLocalStorage = [
+                    'pontuacaoVerboDificil', 
+                    'pontuacaoSubstantivoDificil', 
+                    'pontuacaoPronomeDificil',
+                    'pontuacaoAdjetivoDificil'
+                ];
+
+                // Limpar localStorage
+                chavesLocalStorage.forEach(chave => {
+                    localStorage.removeItem(chave);
+                });
+            }
+
+            // Chamar limparPontuacoes ao clicar no botão "Voltar"
+            document.getElementById('voltarBtn').addEventListener('click', limparPontuacoes);
+        </script>
+    </body>
+</html>
