@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Resultado Final</title>
+    </head>
+    
+    <body>
+        <div>
+            <h2>Sua Pontuação Total</h2>
+            <p>Pontuação: <span id="pontuacao-total">0</span></p>
+        </div>
+
+        <script>
+            // Script direto no HTML para teste
+            function somarPontuacoes() {
+                const quiz1 = Number(localStorage.getItem('pontuacaoQuiz1')) || 0;
+                const quiz2 = Number(localStorage.getItem('pontuacaoQuiz2')) || 0;
+                const quiz3 = Number(localStorage.getItem('pontuacaoQuiz3')) || 0;
+                const pontuacaoQuiz4 = Number(localStorage.getItem('pontuacaoQuiz4')) || 0;
+                
+                const total = quiz1 + quiz2 + quiz3;
+                
+                console.log('Quiz 1:', quiz1);
+                console.log('Quiz 2:', quiz2);
+                console.log('Quiz 3:', quiz3);
+                console.log('Quiz 3:', quiz4);
+                console.log('Total:', total);
+                
+                document.getElementById('pontuacao-total').textContent = total;
+            }
+
+            document.addEventListener('DOMContentLoaded', somarPontuacoes);
+        </script>
+    </body>
+</html>
